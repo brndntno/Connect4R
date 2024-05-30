@@ -12,6 +12,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     private Player player;
     private boolean[] pressedKeys;
     private ArrayList<Coin> coins;
+    private ArrayList<Coin2> coins2;
 
     public GraphicsPanel() {
         try {
@@ -100,6 +101,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
             Point mouseClickLocation = e.getPoint();
             Coin coin = new Coin(mouseClickLocation.x, mouseClickLocation.y);
             coins.add(coin);
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) {  // left mouse click
+            Point mouseClickLocation = e.getPoint();
+            Coin2 coin = new Coin2(mouseClickLocation.x, mouseClickLocation.y);
+            coins2.add(coin);
         }
     }
 

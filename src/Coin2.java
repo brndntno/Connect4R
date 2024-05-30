@@ -4,16 +4,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Coin {
+public class Coin2 {
     private int xCoord;
     private int yCoord;
     private BufferedImage image;
 
-    public Coin(int x, int y) {
+    public Coin2(int x, int y) {
         xCoord = x;
         yCoord = y;
         try {
-            image = ImageIO.read(new File("src/Redm&mChip.png"));
+            image = ImageIO.read(new File("src/Yellowm&mChip.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

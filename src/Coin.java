@@ -8,14 +8,24 @@ public class Coin {
     private int xCoord;
     private int yCoord;
     private BufferedImage image;
+    private Color color;
 
-    public Coin(int x, int y) {
+    public Coin(int x, int y, Color color) {
         xCoord = x;
         yCoord = y;
-        try {
-            image = ImageIO.read(new File("src/Redm&mChip.png"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        this.color = color;
+        if (this.color == Color.red) {
+            try {
+                image = ImageIO.read(new File("src/Redm&mChip.png"));
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            try {
+                image = ImageIO.read(new File("src/Yellowm&mChip.png"));
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -29,6 +39,10 @@ public class Coin {
 
     public BufferedImage getImage() {
         return image;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     // we use a "bounding Rectangle" for detecting collision

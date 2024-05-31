@@ -12,7 +12,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     private Player player;
     private boolean[] pressedKeys;
     private ArrayList<Coin> coins;
-    private ArrayList<Coin2> coins2;
+    private Color currentColor;
 
     public GraphicsPanel() {
         try {
@@ -27,6 +27,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         addMouseListener(this);
         setFocusable(true); // this line of code + one below makes this panel active for keylistener events
         requestFocusInWindow(); // see comment above
+        currentColor = Color.RED;
     }
 
     @Override
@@ -41,13 +42,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         for (int i = 0; i < coins.size(); i++) {
             Coin coin = coins.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
-            if (player.playerRect().intersects(coin.coinRect())) { // check for collision
-                player.collectCoin();
-                coins.remove(i);
-                i--;
-            }
         }
-
         // draw score
         g.setFont(new Font("Courier New", Font.BOLD, 24));
         g.drawString("Score: " + player.getScore(), 20, 40);
@@ -99,13 +94,13 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void mouseReleased(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {  // left mouse click
             Point mouseClickLocation = e.getPoint();
-            Coin coin = new Coin(mouseClickLocation.x, mouseClickLocation.y);
-            coins.add(coin);
-        }
-        if (e.getButton() == MouseEvent.BUTTON3) {  // left mouse click
-            Point mouseClickLocation = e.getPoint();
-            Coin2 coin = new Coin2(mouseClickLocation.x, mouseClickLocation.y);
-            coins2.add(coin);
+            Coin coin = new Coin(mouseClickLocation.x, mouseClickLocation.y, currentColor);
+            if (currentColor == Color.RED) {
+                currentColor = Color.YELLOW;
+            } else {
+                currentColor = Color.RED;
+            }
+
         }
     }
 

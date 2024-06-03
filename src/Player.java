@@ -6,21 +6,17 @@ import java.io.IOException;
 
 public class Player {
     private final double MOVE_AMT = 0.2;
-    private BufferedImage right;
-    private BufferedImage left;
-    private boolean facingRight;
+    private BufferedImage bufferedImage;
     private double xCoord;
     private double yCoord;
     private int score;
 
-    public Player(String leftImg, String rightImg) {
-        facingRight = true;
+    public Player(String image) {
         xCoord = 50; // starting position is (50, 435), right on top of ground
         yCoord = 435;
         score = 0;
         try {
-            left = ImageIO.read(new File(leftImg));
-            right = ImageIO.read(new File(rightImg));
+            bufferedImage = ImageIO.read(new File(image));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -38,13 +34,6 @@ public class Player {
         return score;
     }
 
-    public void faceRight() {
-        facingRight = true;
-    }
-
-    public void faceLeft() {
-        facingRight = false;
-    }
 
     public void moveRight() {
         if (xCoord + MOVE_AMT <= 920) {
@@ -75,11 +64,7 @@ public class Player {
     }
 
     public BufferedImage getPlayerImage() {
-        if (facingRight) {
-            return right;
-        } else {
-            return left;
-        }
+        return bufferedImage;
     }
 
     // we use a "bounding Rectangle" for detecting collision

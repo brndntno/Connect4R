@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 public class GraphicsPanel extends JPanel implements KeyListener, MouseListener {
     private BufferedImage background;
-    private Player player;
+    private Player player1;
+    private Player player2;
     private boolean[] pressedKeys;
     private ArrayList<Coin> coins;
     private Color currentColor;
@@ -21,7 +22,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        player = new Player("src/Redm&mChip.png", "src/Yellowm&mChip.png");
+        player1 = new Player("src/Redm&mChip.png");
+        player2 = new Player("src/Yellowm&mChip.png");
         coins = new ArrayList<>();
         pressedKeys = new boolean[128]; // 128 keys on keyboard, max keycode is 127
         addKeyListener(this);
@@ -36,7 +38,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);  // just do this
         g.drawImage(background, 0, 0, null);  // the order that things get "painted" matter; we put background down first
-        g.drawImage(player.getPlayerImage(), player.getxCoord(), player.getyCoord(), null);
+        g.drawImage(player1.getPlayerImage(), player1.getxCoord(), player1.getyCoord(), null);
+        g.drawImage(player1.getPlayerImage(), player2.getxCoord(), player2.getyCoord(), null);
 
         // this loop does two things:  it draws each Coin that gets placed with mouse clicks,
         // and it also checks if the player has "intersected" (collided with) the Coin, and if so,
@@ -56,28 +59,47 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         }
         // draw score
         g.setFont(new Font("Courier New", Font.BOLD, 24));
-        g.drawString("Score: " + player.getScore(), 20, 40);
+        g.drawString("Player 1 score: " + player1.getScore(), 790, 490);
+        g.drawString("Player 2 score: " + player2.getScore(), 800, 490);
 
         // player moves left (A)
         if (pressedKeys[65]) {
-            player.faceLeft();
-            player.moveLeft();
+            player1.moveLeft();
         }
 
         // player moves right (D)
         if (pressedKeys[68]) {
-            player.faceRight();
-            player.moveRight();
+            player1.moveRight();
         }
 
         // player moves up (W)
         if (pressedKeys[87]) {
-            player.moveUp();
+            player1.moveUp();
         }
 
         // player moves down (S)
         if (pressedKeys[83]) {
-            player.moveDown();
+            player1.moveDown();
+        }
+
+        // player moves left (left)
+        if (pressedKeys[37]) {
+            player1.moveLeft();
+        }
+
+        // player moves right (right)
+        if (pressedKeys[39]) {
+            player1.moveRight();
+        }
+
+        // player moves up (up)
+        if (pressedKeys[38]) {
+            player1.moveUp();
+        }
+
+        // player moves down (down)
+        if (pressedKeys[40]) {
+            player1.moveDown();
         }
     }
 

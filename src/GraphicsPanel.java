@@ -13,6 +13,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     private boolean[] pressedKeys;
     private ArrayList<Coin> coins;
     private Color currentColor;
+    private Coin[][] board;
 
     public GraphicsPanel() {
         try {
@@ -28,6 +29,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         setFocusable(true); // this line of code + one below makes this panel active for keylistener events
         requestFocusInWindow(); // see comment above
         currentColor = Color.RED;
+        board = new Coin[6][7];
     }
 
     @Override
@@ -42,6 +44,15 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         for (int i = 0; i < coins.size(); i++) {
             Coin coin = coins.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
+        }
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] != null) {
+                    Coin coin = board[i][j];
+                    g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
+                }
+            }
         }
         // draw score
         g.setFont(new Font("Courier New", Font.BOLD, 24));
@@ -94,13 +105,30 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void mouseReleased(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {  // left mouse click
             Point mouseClickLocation = e.getPoint();
-            Coin coin = new Coin(mouseClickLocation.x, mouseClickLocation.y, currentColor);
             if (currentColor == Color.RED) {
                 currentColor = Color.YELLOW;
             } else {
                 currentColor = Color.RED;
             }
-
+            int location = 0;
+            int num = 0;
+            for (int i = 111; i < 780; i += 111) {
+                if (mouseClickLocation.getX() < i) {
+                    location = i / 2;
+                    break;
+                }
+                num ++;
+            }
+            Coin coin = new Coin(location, mouseClickLocation.y, currentColor);
+            if (board[5][num] == null) {
+                board[5][num] = coin;
+            } else {
+                for (int i = 0; i < board.length; i++) {
+                    if (board[i][num] != null) {
+                        board[i - 1][num] = coin;
+                    }
+                }
+            }
         }
     }
 

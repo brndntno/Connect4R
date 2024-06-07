@@ -38,6 +38,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);  // just do this
         g.drawImage(background, 0, 0, null);  // the order that things get "painted" matter; we put background down first
+        g.drawImage(player1.getPlayerImage(), player1.getxCoord(), player1.getyCoord(), null);
+        g.drawImage(player1.getPlayerImage(), player2.getxCoord(), player2.getyCoord(), null);
 
         // this loop does two things:  it draws each Coin that gets placed with mouse clicks,
         // and it also checks if the player has "intersected" (collided with) the Coin, and if so,
@@ -46,19 +48,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
             Coin coin = coins.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
         }
-
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] != null) {
-                    Coin coin = board[i][j];
-                    g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
-                }
-            }
-        }
         // draw score
         g.setFont(new Font("Courier New", Font.BOLD, 24));
-        g.drawString("Player 1 score: " + player1.getScore(), 1, 525);
-        g.drawString("Player 2 score: " + player2.getScore(), 1, 550);
+        g.drawString("Player 1 score: " + player1.getScore(), 790, 490);
+        g.drawString("Player 2 score: " + player2.getScore(), 800, 490);
 
         // player moves left (A)
         if (pressedKeys[65]) {
@@ -131,28 +124,14 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 currentColor = Color.RED;
             }
             int location = 0;
-            int num = 0;
-            int i;
-            int j;
-            for (i = 0; i < 780; i += 111) {
+            for (int i = 111; i < 780; i += 111) {
                 if (mouseClickLocation.getX() <= i) {
-                    location = i + 80;
+                    location = i - 80;
                     break;
                 }
-                for (j = 0; j < 490; j += 81) {
-
-                }
             }
-            Coin coin = new Coin(location, mouseClickLocation.y, currentColor);
-            if (board[5][num] == null) {
-                board[5][num] = coin;
-            } else {
-                for (int i = 0; i < board.length; i++) {
-                    if (board[i][num] != null) {
-                        board[i - 1][num] = coin;
-                    }
-                }
-            }
+            Coin coin = new Coin(location, e.getY(), currentColor);
+            coins.add(coin);
         }
     }
 

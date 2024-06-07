@@ -48,15 +48,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
             Coin coin = coins.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
         }
-
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] != null) {
-                    Coin coin = board[i][j];
-                    g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
-                }
-            }
-        }
         // draw score
         g.setFont(new Font("Courier New", Font.BOLD, 24));
         g.drawString("Player 1 score: " + player1.getScore(), 790, 490);
@@ -133,23 +124,14 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 currentColor = Color.RED;
             }
             int location = 0;
-            int num = 0;
             for (int i = 111; i < 780; i += 111) {
                 if (mouseClickLocation.getX() <= i) {
                     location = i - 80;
                     break;
                 }
             }
-            Coin coin = new Coin(location, mouseClickLocation.y, currentColor);
-            if (board[5][num] == null) {
-                board[5][num] = coin;
-            } else {
-                for (int i = 0; i < board.length; i++) {
-                    if (board[i][num] != null) {
-                        board[i - 1][num] = coin;
-                    }
-                }
-            }
+            Coin coin = new Coin(location, e.getY(), currentColor);
+            coins.add(coin);
         }
     }
 

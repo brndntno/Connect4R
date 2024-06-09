@@ -126,22 +126,31 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
             int num = 0;
             for (int i = 111; i < 780; i += 111) {
                 if (mouseClickLocation.getX() <= i) {
-                    x = i - 80 - (num * 4);
+                    x = i - 80 - (num * 5) + 1;
                     break;
                 }
                 num++;
             }
             int y = 0;
             int num2 = 0;
-            for (int j = 81; j < 490; j += 61) {
+            for (int j = 81; j < 490; j += 71) {
                 if (mouseClickLocation.getY() <= j) {
-                    y = j - 80 - num2;
+                    y = j - 70 + num2;
                     break;
                 }
-                num2++;
+                num2 += 6;
             }
             Coin coin = new Coin(x, y, currentColor);
-            coins.add(coin);
+            boolean empty = true;
+            for (int i = 0; i < coins.size(); i++) {
+                if (coins.get(i).coinRect().equals(coin.coinRect())) {
+                    empty = false;
+                    break;
+                }
+            }
+            if (empty) {
+                coins.add(coin);
+            }
             board[(x / 111) - 1][(y / 61) - 1] = coin;
         }
         for (int r = 0; r < board.length; r++) {

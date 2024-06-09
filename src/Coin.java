@@ -45,6 +45,14 @@ public class Coin {
         return color;
     }
 
+    public String getColor2() {
+        if (getColor() == Color.red) {
+            return "red";
+        } else {
+            return "yellow";
+        }
+    }
+
     // we use a "bounding Rectangle" for detecting collision
     public Rectangle coinRect() {
         int imageHeight = getImage().getHeight();

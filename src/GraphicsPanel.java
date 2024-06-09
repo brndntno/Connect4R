@@ -135,14 +135,153 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
             int num2 = 0;
             for (int j = 81; j < 490; j += 61) {
                 if (mouseClickLocation.getY() <= j) {
-                    y = j - 80 - (num2 * 2);
+                    y = j - 80 - num2;
                     break;
                 }
                 num2++;
             }
             Coin coin = new Coin(x, y, currentColor);
             coins.add(coin);
-            board[(int) x / 111][(int) y / 61] = coin;
+            board[(x / 111) - 1][(y / 61) - 1] = coin;
+        }
+        for (int r = 0; r < board.length; r++) {
+            if (r == 0) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
+            if (r == 1) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
+            if (r == 2) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r + 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
+            if (r == 3) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
+            if (r == 4) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
+            if (r == 5) {
+                for (int c = 0; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c + 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 3; c < board[r].length; c++) {
+                    if (board[r][c].getColor2().equals(board[r - 1][c - 1].getColor2()) && board[r][c].getColor2().equals(board[r - 2][c - 2].getColor2()) && board[r][c].getColor2().equals(board[r - 3][c - 3].getColor2())) {
+                        System.out.println(currentColor + "won");
+                    }
+                }
+                for (int c = 0; c < 4; c++) {
+                    if (board[r][c].getColor2().equals(board[r][c + 1].getColor2()) && board[r][c].getColor2().equals(board[r][c + 2].getColor2()) && board[r][c].getColor2().equals(board[r][c + 3].getColor2())) {
+                        System.out.println((currentColor + "won"));
+                    }
+                }
+            }
         }
     }
 

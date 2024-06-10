@@ -122,6 +122,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         if (e.getButton() == MouseEvent.BUTTON1) {  // left mouse click
             Point mouseClickLocation = e.getPoint();
 
+            int xcount = 0;
+            int yCount = 0;
             int x = 0;
             int num = 0;
             for (int i = 111; i < 780; i += 111) {
@@ -130,6 +132,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                     break;
                 }
                 num++;
+                xcount++;
             }
             int y = 0;
             int num2 = 0;
@@ -139,6 +142,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                     break;
                 }
                 num2 += 6;
+                yCount++;
             }
             Coin coin = new Coin(x, y, currentColor);
             boolean empty = true;
@@ -155,7 +159,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                     currentColor = Color.RED;
                 }
                 coins.add(coin);
-                board[(x / 111) - 1][(y / 61) - 1] = coin;
+                board[xcount][yCount] = coin;
             }
         }
         for (int r = 0; r < board.length; r++) {

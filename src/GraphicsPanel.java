@@ -117,11 +117,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         Coin[][] board = new Coin[6][7];
         if (e.getButton() == MouseEvent.BUTTON1) {  // left mouse click
             Point mouseClickLocation = e.getPoint();
-            if (currentColor == Color.RED) {
-                currentColor = Color.YELLOW;
-            } else {
-                currentColor = Color.RED;
-            }
             int x = 0;
             int num = 0;
             for (int i = 111; i < 780; i += 111) {
@@ -149,6 +144,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 }
             }
             if (empty) {
+                if (currentColor == Color.RED) {
+                    currentColor = Color.YELLOW;
+                } else {
+                    currentColor = Color.RED;
+                }
                 coins.add(coin);
             }
             board[(x / 111) - 1][(y / 61) - 1] = coin;

@@ -29,6 +29,10 @@ public class Coin {
         }
     }
 
+    public Coin(Color color) {
+        this.color = color;
+    }
+
     public int getxCoord() {
         return xCoord;
     }
@@ -48,9 +52,11 @@ public class Coin {
     public String getColor2() {
         if (getColor() == Color.red) {
             return "red";
-        } else {
+        }
+        if (getColor() == Color.yellow) {
             return "yellow";
         }
+        return "blue";
     }
 
     // we use a "bounding Rectangle" for detecting collision

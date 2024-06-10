@@ -22,14 +22,6 @@ public class Player {
         }
     }
 
-    public int getxCoord() {
-        return (int) xCoord;
-    }
-
-    public int getyCoord() {
-        return (int) yCoord;
-    }
-
     public int getScore() {
         return score;
     }
@@ -59,7 +51,7 @@ public class Player {
         }
     }
 
-    public void collectCoin() {
+    public void increaseScore() {
         score++;
     }
 

@@ -12,9 +12,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     private Player player1;
     private Player player2;
     private boolean[] pressedKeys;
-    private ArrayList<Coin> coins;
+    private ArrayList<Chip> chips;
     private Color currentColor;
-    private Coin[][] board;
+    private Chip[][] board;
 
     public GraphicsPanel() {
         try {
@@ -24,17 +24,17 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         }
         player1 = new Player("src/Redm&mChip.png");
         player2 = new Player("src/Yellowm&mChip.png");
-        coins = new ArrayList<>();
+        chips = new ArrayList<>();
         pressedKeys = new boolean[128]; // 128 keys on keyboard, max keycode is 127
         addKeyListener(this);
         addMouseListener(this);
         setFocusable(true); // this line of code + one below makes this panel active for keylistener events
         requestFocusInWindow(); // see comment above
         currentColor = Color.RED;
-        board = new Coin[6][7];
+        board = new Chip[6][7];
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[r].length; c++) {
-                board[r][c] = new Coin(Color.blue);
+                board[r][c] = new Chip(Color.blue);
             }
         }
     }
@@ -47,8 +47,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         // this loop does two things:  it draws each Coin that gets placed with mouse clicks,
         // and it also checks if the player has "intersected" (collided with) the Coin, and if so,
         // the score goes up and the Coin is removed from the arraylist
-        for (int i = 0; i < coins.size(); i++) {
-            Coin coin = coins.get(i);
+        for (int i = 0; i < chips.size(); i++) {
+            Chip coin = chips.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
         }
         // draw score
@@ -144,10 +144,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 num2 += 6;
                 yCount++;
             }
-            Coin coin = new Coin(x, y, currentColor);
+            Chip chip = new Chip(x, y, currentColor);
             boolean empty = true;
-            for (int i = 0; i < coins.size(); i++) {
-                if (coins.get(i).coinRect().equals(coin.coinRect())) {
+            for (int i = 0; i < chips.size(); i++) {
+                if (chips.get(i).chipRect().equals(chip.chipRect())) {
                     empty = false;
                     break;
                 }
@@ -158,8 +158,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 } else {
                     currentColor = Color.RED;
                 }
-                coins.add(coin);
-                board[xcount][yCount] = coin;
+                chips.add(chip);
+                board[xcount][yCount] = chip;
             }
         }
         for (int r = 0; r < board.length; r++) {
@@ -167,6 +167,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 for (int c = 0; c < board[r].length; c++) {
                     if (!board[r][c].getColor2().equals("blue") && board[r][c].getColor2().equals(board[r + 1][c].getColor2()) && board[r][c].getColor2().equals(board[r + 2][c].getColor2()) && board[r][c].getColor2().equals(board[r + 3][c].getColor2())) {
                         System.out.println(currentColor.toString() + "won");
+
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -256,4 +257,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void mouseEntered(MouseEvent e) { } // unimplemented
 
     public void mouseExited(MouseEvent e) { } // unimplemented
+
+    public void reset() {
+        chips.clear();
+        board = new Chip[6][7];
+    }
 }

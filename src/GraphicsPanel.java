@@ -54,46 +54,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         g.setFont(new Font("Courier New", Font.BOLD, 24));
         g.drawString("Player 1 score: " + player1.getScore(), 800, 230);
         g.drawString("Player 2 score: " + player2.getScore(), 800, 480);
-
-        // player moves left (A)
-        if (pressedKeys[65]) {
-            player1.moveLeft();
-        }
-
-        // player moves right (D)
-        if (pressedKeys[68]) {
-            player1.moveRight();
-        }
-
-        // player moves up (W)
-        if (pressedKeys[87]) {
-            player1.moveUp();
-        }
-
-        // player moves down (S)
-        if (pressedKeys[83]) {
-            player1.moveDown();
-        }
-
-        // player moves left (left)
-        if (pressedKeys[37]) {
-            player1.moveLeft();
-        }
-
-        // player moves right (right)
-        if (pressedKeys[39]) {
-            player1.moveRight();
-        }
-
-        // player moves up (up)
-        if (pressedKeys[38]) {
-            player1.moveUp();
-        }
-
-        // player moves down (down)
-        if (pressedKeys[40]) {
-            player1.moveDown();
-        }
     }
 
     // ----- KeyListener interface methods -----

@@ -47,7 +47,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
-        g.drawImage(player1.getPlayerImage(), 800, 50, null);
+        g.drawImage(player1.getPlayerImage(), 800, 10, null);
         g.drawImage(player2.getPlayerImage(), 800, 250, null);
 
         for (int i = 0; i < chips.size(); i++) {
@@ -56,8 +56,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         }
 
         g.setFont(new Font("Courier New", Font.BOLD, 24));
-        g.drawString("Player 1 score: " + player1.getScore(), 1, 525);
-        g.drawString("Player 2 score: " + player2.getScore(), 1, 550);
+        g.drawString("Player 1 score: " + player1.getScore(), 800, 230);
+        g.drawString("Player 2 score: " + player2.getScore(), 800, 480);
 
         textField.setLocation(600, 550);
         textField.setVisible(false);

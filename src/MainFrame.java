@@ -7,7 +7,7 @@ public class MainFrame implements Runnable {
     public MainFrame() {
         JFrame frame = new JFrame("Connect4Real");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 750); // 540 height of image + 40 for window menu bar
+        frame.setSize(1075, 525); // 540 height of image + 40 for window menu bar
         frame.setLocationRelativeTo(null); // auto-centers frame in screen
 
         // create and add panel

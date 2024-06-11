@@ -3,6 +3,5 @@ public class Main {
         MainFrame f = new MainFrame();
         System.out.println("a");
         System.out.println("woah");
-        System.out.println("just committing smth new to see new code");
     }
 }

@@ -4,13 +4,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Coin {
+public class Chip {
     private int xCoord;
     private int yCoord;
     private BufferedImage image;
     private Color color;
 
-    public Coin(int x, int y, Color color) {
+    public Chip (int x, int y, Color color) {
         xCoord = x;
         yCoord = y;
         this.color = color;
@@ -27,6 +27,10 @@ public class Coin {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public Chip(Color color) {
+        this.color = color;
     }
 
     public int getxCoord() {
@@ -48,13 +52,15 @@ public class Coin {
     public String getColor2() {
         if (getColor() == Color.red) {
             return "red";
-        } else {
+        }
+        if (getColor() == Color.yellow) {
             return "yellow";
         }
+        return "blue";
     }
 
     // we use a "bounding Rectangle" for detecting collision
-    public Rectangle coinRect() {
+    public Rectangle chipRect() {
         int imageHeight = getImage().getHeight();
         int imageWidth = getImage().getWidth();
         Rectangle rect = new Rectangle(xCoord, yCoord, imageWidth, imageHeight);

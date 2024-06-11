@@ -15,8 +15,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     private ArrayList<Chip> chips;
     private Color currentColor;
     private Chip[][] board;
-    private JTextField textField;
-    private String winnerStr;
 
     public GraphicsPanel() {
         try {
@@ -39,8 +37,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                 board[r][c] = new Chip(Color.blue);
             }
         }
-        textField = new JTextField();
-        winnerStr = "";
     }
 
     @Override
@@ -58,9 +54,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         g.setFont(new Font("Courier New", Font.BOLD, 24));
         g.drawString("Player 1 score: " + player1.getScore(), 800, 230);
         g.drawString("Player 2 score: " + player2.getScore(), 800, 480);
-
-        textField.setLocation(600, 550);
-        textField.setVisible(false);
     }
 
     // ----- KeyListener interface methods -----
@@ -71,10 +64,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         // A = 65, D = 68, S = 83, W = 87, left = 37, up = 38, right = 39, down = 40, space = 32, enter = 10
         int key = e.getKeyCode();
         pressedKeys[key] = true;
-        if (e.getKeyCode() == 10) {
-            textField.setVisible(false);
-            winnerStr = textField.getText();
-        }
     }
 
     public void keyReleased(KeyEvent e) {
@@ -141,7 +130,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -152,7 +140,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 3; c < board[r].length; c++) {
@@ -163,7 +150,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -174,7 +160,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }
@@ -187,7 +172,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -198,7 +182,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 3; c < board[r].length; c++) {
@@ -209,7 +192,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -220,7 +202,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }
@@ -233,7 +214,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -244,7 +224,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 3; c < board[r].length; c++) {
@@ -255,7 +234,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
                 for (int c = 0; c < 4; c++) {
@@ -266,7 +244,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }
@@ -279,7 +256,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }
@@ -292,7 +268,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }
@@ -305,7 +280,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                             player1.increaseScore();
                         }
                         reset();
-                        textField.setVisible(true);
                     }
                 }
             }

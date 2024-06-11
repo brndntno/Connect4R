@@ -41,17 +41,16 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);  // just do this
-        g.drawImage(background, 0, 0, null);  // the order that things get "painted" matter; we put background down first
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
+        g.drawImage(player1.getPlayerImage(), 800, 50, null);
+        g.drawImage(player2.getPlayerImage(), 800, 250, null);
 
-        // this loop does two things:  it draws each Coin that gets placed with mouse clicks,
-        // and it also checks if the player has "intersected" (collided with) the Coin, and if so,
-        // the score goes up and the Coin is removed from the arraylist
         for (int i = 0; i < chips.size(); i++) {
             Chip coin = chips.get(i);
             g.drawImage(coin.getImage(), coin.getxCoord(), coin.getyCoord(), null); // draw Coin
         }
-        // draw score
+
         g.setFont(new Font("Courier New", Font.BOLD, 24));
         g.drawString("Player 1 score: " + player1.getScore(), 1, 525);
         g.drawString("Player 2 score: " + player2.getScore(), 1, 550);
@@ -113,10 +112,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
     }
 
     // ----- MouseListener interface methods -----
-    public void mouseClicked(MouseEvent e) { }  // unimplemented; if you move your mouse while clicking,
-    // this method isn't called, so mouseReleased is best
+    public void mouseClicked(MouseEvent e) { }
 
-    public void mousePressed(MouseEvent e) { } // unimplemented
+    public void mousePressed(MouseEvent e) { }
 
     public void mouseReleased(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {  // left mouse click
@@ -328,9 +326,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
         }
     }
 
-    public void mouseEntered(MouseEvent e) { } // unimplemented
+    public void mouseEntered(MouseEvent e) { }
 
-    public void mouseExited(MouseEvent e) { } // unimplemented
+    public void mouseExited(MouseEvent e) { }
 
     public void reset() {
         chips.clear();

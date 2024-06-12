@@ -90,7 +90,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                     break;
                 }
                 num++;
-                xcount++;
+                yCount++;
             }
             int y = 0;
             int num2 = 0;
@@ -100,7 +100,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener 
                     break;
                 }
                 num2 += 6;
-                yCount++;
+                xcount++;
             }
             Chip chip = new Chip(x, y, currentColor);
             boolean empty = true;
